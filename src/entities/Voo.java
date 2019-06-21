@@ -2,23 +2,28 @@ package entities;
 
 import java.time.LocalTime;
 
+import exceptions.AssentoInvalidoException;
+import exceptions.AssentoOcupadoException;
+
 public class Voo {
-	
+
 	private Local partida;
 	private Local destino;
 	private LocalTime horaSaida;
 	private LocalTime horaChegada;
+	private int distancia;
 	private boolean[] assentos;
-	
+
 	public Voo(Local partida, Local destino, LocalTime horaSaida, LocalTime horaChegada) {
 		this.partida = partida;
 		this.destino = destino;
 		this.horaSaida = horaSaida;
 		this.horaChegada = horaChegada;
+		this.distancia = Math.abs(this.partida.getPosition() - this.destino.getPosition());
 	}
-	
-	public Voo(int assentosT) {
-		this.assentos = new boolean[assentosT];
+
+	public Voo(int assentos) {
+		this.assentos = new boolean[assentos];
 	}
 
 	public Local getPartida() {
@@ -60,7 +65,21 @@ public class Voo {
 	public void setAssentos(boolean[] assentos) {
 		this.assentos = assentos;
 	}
-	
-	
+
+	public int getDistancia() {
+		return this.distancia;
+	}
+
+	public void marcarAssento(int assento) throws AssentoInvalidoException, AssentoOcupadoException{
+		if (assento >= 1 && assento <= this.assentos.length) {
+			if (this.assentos[assento] == false) {
+				this.assentos[assento] = true;
+			} else {
+				throw new AssentoOcupadoException(assento);
+			}
+		} else {
+			throw new AssentoInvalidoException(assento);
+		}
+	}
 
 }
