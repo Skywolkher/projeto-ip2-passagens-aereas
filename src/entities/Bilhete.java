@@ -6,14 +6,15 @@ public class Bilhete {
 	private Passageiro passageiro;
 	private Voo voo;
 	private int assento;
-	private float valor;
+	private double valor;
+	private Companhia companhia;
 	
-	public Bilhete (Passageiro passageiro, Voo voo, int assento) 
-			throws AssentoInvalidoException, AssentoOcupadoException {
-		if (passageiro == null || voo == null || assento < 0) {
+	public Bilhete (Passageiro passageiro, Companhia companhia, Voo voo ,int assento) 
+			throws AssentoInvalidoException, AssentoOcupadoException, VooNaoExisteException {
+		if (companhia == null || passageiro == null || voo == null || assento < 0) {
             throw new IllegalArgumentException();
         }
-		this.valor = (float) ((voo.getDistancia()*50) + ((voo.getDistancia()*50)*0.2));
+		this.valor = companhia.valorBilhete(voo);
 		this.passageiro = passageiro;
         this.voo = voo;
         this.assento = assento;
@@ -44,11 +45,16 @@ public class Bilhete {
         return passageiro.getCpf();
     }
     
-    public void setValor(float valor) {
-    	this.valor = valor;
-    }
-    
-    public float getValor() {
+    public double getValor() {
     	return this.valor;
     }
+
+	public Companhia getCompanhia() {
+		return companhia;
+	}
+
+	public void setCompanhia(Companhia companhia) {
+		this.companhia = companhia;
+	}
+    
 }
