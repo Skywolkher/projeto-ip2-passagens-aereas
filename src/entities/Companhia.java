@@ -17,6 +17,10 @@ public class Companhia{
 		this.preco = preco;
 	}
 	
+	public Companhia(String nome) {
+		this.nome = nome;
+	}
+	
 	public void adicionarVoos(Voo voo) {
 		this.voo.add(voo);
 	}
@@ -48,6 +52,10 @@ public class Companhia{
 
 	public double getPreco() {
 		return preco;
+	}
+	
+	public List<Voo> getVoos() {
+		return this.voo;
 	}
 
 	@Override

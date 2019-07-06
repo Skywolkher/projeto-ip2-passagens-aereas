@@ -3,8 +3,7 @@ package repositories;
 import java.util.ArrayList;
 
 import entities.*;
-import exceptions.BilheteExisteException;
-import exceptions.BilheteInexistenteException;
+import exceptions.*;
 
 public class Repositorio implements IRepositorio{
 	
