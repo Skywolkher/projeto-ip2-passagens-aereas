@@ -50,4 +50,30 @@ public class Companhia{
 		return preco;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Companhia other = (Companhia) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
+			return false;
+		if (Double.doubleToLongBits(taxa) != Double.doubleToLongBits(other.taxa))
+			return false;
+		if (voo == null) {
+			if (other.voo != null)
+				return false;
+		} else if (!voo.equals(other.voo))
+			return false;
+		return true;
+	}
+	
 }

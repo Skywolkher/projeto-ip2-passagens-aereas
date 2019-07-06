@@ -82,4 +82,30 @@ public class Voo {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voo other = (Voo) obj;
+		if (destino != other.destino)
+			return false;
+		if (horaChegada == null) {
+			if (other.horaChegada != null)
+				return false;
+		} else if (!horaChegada.equals(other.horaChegada))
+			return false;
+		if (horaSaida == null) {
+			if (other.horaSaida != null)
+				return false;
+		} else if (!horaSaida.equals(other.horaSaida))
+			return false;
+		if (partida != other.partida)
+			return false;
+		return true;
+	}
+
 }

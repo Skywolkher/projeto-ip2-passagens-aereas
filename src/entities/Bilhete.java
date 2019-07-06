@@ -56,5 +56,32 @@ public class Bilhete {
 	public void setCompanhia(Companhia companhia) {
 		this.companhia = companhia;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bilhete other = (Bilhete) obj;
+		if (companhia == null) {
+			if (other.companhia != null)
+				return false;
+		} else if (!companhia.equals(other.companhia))
+			return false;
+		if (passageiro == null) {
+			if (other.passageiro != null)
+				return false;
+		} else if (!passageiro.equals(other.passageiro))
+			return false;
+		if (voo == null) {
+			if (other.voo != null)
+				return false;
+		} else if (!voo.equals(other.voo))
+			return false;
+		return true;
+	}
     
 }
