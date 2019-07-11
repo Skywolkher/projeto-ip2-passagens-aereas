@@ -45,7 +45,7 @@ public class Passageiro {
 	
 	@Override
 	public String toString() {
-		return String.format("Nome do Passageiro: %s %n CPF: %l", this.nome, this.cpf);
+		return String.format("Nome do Passageiro: %s \n CPF: %l\n", this.nome, this.cpf);
 	}
 	
 }

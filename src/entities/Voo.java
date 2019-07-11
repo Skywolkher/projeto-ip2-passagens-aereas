@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import exceptions.AssentoInvalidoException;
 import exceptions.AssentoOcupadoException;
@@ -13,12 +14,15 @@ public class Voo {
 	private LocalDateTime horaChegada;
 	private int distancia;
 	private boolean[] assentos;
+	
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm");
 
-	public Voo(Local partida, Local destino, LocalDateTime horaSaida, LocalDateTime horaChegada) {
+	public Voo(Local partida, Local destino, LocalDateTime horaSaida, LocalDateTime horaChegada, int assentos) {
 		this.partida = partida;
 		this.destino = destino;
 		this.horaSaida = horaSaida;
 		this.horaChegada = horaChegada;
+		this.assentos = new boolean[assentos];
 		this.distancia = Math.abs(this.partida.getPosition() - this.destino.getPosition());
 	}
 
@@ -119,6 +123,13 @@ public class Voo {
 		if (partida != other.partida)
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return ("Partida: " +this.partida.getNome()+ "\nDestino: " +this.destino.getNome()+ "\nSaída: " +
+				this.getHoraSaida().format(formatter)+ "\nChegada: "
+				+this.getHoraChegada().format(formatter)+ "\n");
 	}
 
 }

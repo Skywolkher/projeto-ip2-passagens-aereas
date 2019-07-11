@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.*;
@@ -9,7 +10,7 @@ public class Companhia{
 	private String nome;
 	private double taxa;
 	private double preco;
-	private List<Voo> voo;
+	private List<Voo> voo = new ArrayList<>();
 	
 	public Companhia(String nome, double taxa, double preco) {
 		this.nome = nome;
@@ -57,6 +58,13 @@ public class Companhia{
 	public List<Voo> getVoos() {
 		return this.voo;
 	}
+	
+	public Voo getVoo(Voo voo) {
+		for (Voo v: this.voo) {
+			if (v == voo) return v;
+		}
+		return null;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -82,6 +90,11 @@ public class Companhia{
 		} else if (!voo.equals(other.voo))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return this.nome;
 	}
 	
 }

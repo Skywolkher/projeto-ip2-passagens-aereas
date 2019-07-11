@@ -14,6 +14,7 @@ public class Bilhete {
 		if (companhia == null || passageiro == null || voo == null || assento < 0) {
             throw new IllegalArgumentException();
         }
+		this.companhia = companhia;
 		this.valor = companhia.valorBilhete(voo);
 		this.passageiro = passageiro;
         this.voo = voo;
@@ -82,6 +83,12 @@ public class Bilhete {
 		} else if (!voo.equals(other.voo))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return ("Voo: \n" +this.voo.toString()+ "\nCompanhia: " +this.companhia.getNome()+
+				"\nAssento: " +this.assento+ "\nValor: " +this.valor+ "C$\n");
 	}
     
 }

@@ -12,6 +12,10 @@ public enum Local {
 	    this.nome = nome;
 	    this.position = position;
 	}
+	
+	Local (String nome){
+		this.nome = nome;
+	}
 
 	public String getNome() {
 		return nome;
