@@ -6,7 +6,7 @@ import entities.Bilhete;
 import exceptions.BilheteExisteException;
 import exceptions.BilheteInexistenteException;
 
-public interface IRepositorio {
+public interface IRepositorioBilhetes {
 	
 	public void addBilhete (Bilhete bilhete) throws BilheteExisteException;
 	public void removeBilhete (Bilhete bilhete) throws BilheteInexistenteException;

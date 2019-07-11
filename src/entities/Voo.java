@@ -1,6 +1,6 @@
 package entities;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import exceptions.AssentoInvalidoException;
 import exceptions.AssentoOcupadoException;
@@ -9,12 +9,12 @@ public class Voo {
 
 	private Local partida;
 	private Local destino;
-	private LocalTime horaSaida;
-	private LocalTime horaChegada;
+	private LocalDateTime horaSaida;
+	private LocalDateTime horaChegada;
 	private int distancia;
 	private boolean[] assentos;
 
-	public Voo(Local partida, Local destino, LocalTime horaSaida, LocalTime horaChegada) {
+	public Voo(Local partida, Local destino, LocalDateTime horaSaida, LocalDateTime horaChegada) {
 		this.partida = partida;
 		this.destino = destino;
 		this.horaSaida = horaSaida;
@@ -42,19 +42,19 @@ public class Voo {
 		this.destino = destino;
 	}
 
-	public LocalTime getHoraSaida() {
+	public LocalDateTime getHoraSaida() {
 		return horaSaida;
 	}
 
-	public void setHoraSaida(LocalTime horaSaida) {
+	public void setHoraSaida(LocalDateTime horaSaida) {
 		this.horaSaida = horaSaida;
 	}
 
-	public LocalTime getHoraChegada() {
+	public LocalDateTime getHoraChegada() {
 		return horaChegada;
 	}
 
-	public void setHoraChegada(LocalTime horaChegada) {
+	public void setHoraChegada(LocalDateTime horaChegada) {
 		this.horaChegada = horaChegada;
 	}
 
@@ -79,6 +79,19 @@ public class Voo {
 			}
 		} else {
 			throw new AssentoInvalidoException(assento);
+		}
+	}
+	
+	/*
+	* Um voo é inválido quando este tem os horários iguais, os mesmos locais de partida e destino
+	* ou quando o dia de partida é posterior ao dia de chegada
+	*/
+	public boolean vooInvalido(Voo voo) {
+		if ((voo.getHoraSaida() == voo.getHoraChegada()) || (voo.getPartida() == voo.getDestino()) ||
+				voo.getHoraSaida().getDayOfMonth()>voo.getHoraChegada().getDayOfMonth()){
+			return true;
+		} else {
+			return false;
 		}
 	}
 

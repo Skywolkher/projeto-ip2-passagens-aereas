@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import entities.*;
 import exceptions.*;
 
-public class Repositorio implements IRepositorio{
+public class RepositorioBilhetes implements IRepositorioBilhetes{
 	
-	private static Repositorio instance;
+	private static RepositorioBilhetes instance;
 	private ArrayList<Bilhete> bilhetes = new ArrayList<>();
 	
-	public static Repositorio getInstance() {
+	public static RepositorioBilhetes getInstance() {
 		if (instance == null) {
-			instance = new Repositorio();
+			instance = new RepositorioBilhetes();
 		}
 		return instance;
 	}
 	
-	public Repositorio() {}
+	public RepositorioBilhetes() {}
 	
 	private Bilhete ProcuraBilhete (Passageiro passageiro, Voo voo, Companhia companhia) {
 		for (Bilhete a : bilhetes) {

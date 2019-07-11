@@ -1,6 +1,6 @@
 package repositories;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import exceptions.*;
@@ -21,7 +21,7 @@ public class RepositorioCompanhias  implements IRepositorioCompanhias{
 	public RepositorioCompanhias () {}
 	
 	@Override
-	public Voo ProcurarVoo (Companhia comp, Local partida, Local destino, LocalTime saida, LocalTime chegada){
+	public Voo ProcurarVoo (Companhia comp, Local partida, Local destino, LocalDateTime saida, LocalDateTime chegada){
 		for (Companhia a: companhias) {
 			if (a == comp) {
 				for (Voo v: a.getVoos()) {
